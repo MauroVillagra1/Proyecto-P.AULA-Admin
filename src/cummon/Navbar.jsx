@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, FormControl, Container, Row, Col, ButtonGroup, ListGroup } from 'react-bootstrap';
 import './Navbar.css';
+import { Link } from "react-router-dom";
 
 function Navbar({ aulas, onBusquedaChange, onAulaSelect, setPisoActual, pisoActual, setHighlightedAulaId }) {
   const [busqueda, setBusqueda] = useState("");
@@ -99,6 +100,9 @@ setPisoActual(aula.aula.planta.nombre);
   ))}
 </ButtonGroup>
           </Col>
+          <Col><Link to="/crear-clase" className="btn btn-success mx-2">
+  Crear Clase
+</Link></Col>
         </Row>
       </Container>
     </div>

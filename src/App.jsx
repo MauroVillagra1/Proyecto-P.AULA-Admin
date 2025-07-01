@@ -8,6 +8,8 @@ import StatusClassroom from "./components/statusclassroom/StatusClassroom";
 import Main from "./main/Inicio.jsx";
 import Navbar from "./cummon/Navbar.jsx";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CrearClase from "./components/clases/CrearClase.jsx"; // 🆕 Nuevo componente
 
 
 function App() {
@@ -49,29 +51,37 @@ const [highlightedAulaId, setHighlightedAulaId] = useState(null);
 
   const closePopup = () => setShowPopup(false);
 
-  return (
-    <>
-     <Navbar
-  aulas={classrooms}
-  onBusquedaChange={handleBusquedaChange}
-  onAulaSelect={handleAulaSelect}
-  setPisoActual={setPisoActual}
-  pisoActual={pisoActual}
-  setHighlightedAulaId={setHighlightedAulaId}
-/>
-<Main
-  classrooms={classrooms}
-  busqueda={busqueda}
-  selectedClassroom={selectedClassroom}
-  setSelectedClassroom={setSelectedClassroom}
-  setShowPopup={setShowPopup}
-  showPopup={showPopup}
-  closePopup={closePopup}
-  pisoActual={pisoActual}
-  setPisoActual={setPisoActual}
-  highlightedAulaId={highlightedAulaId}
-/>
-    </>
+ return (
+    <Router>
+      <Navbar
+        aulas={classrooms}
+        onBusquedaChange={handleBusquedaChange}
+        onAulaSelect={handleAulaSelect}
+        setPisoActual={setPisoActual}
+        pisoActual={pisoActual}
+        setHighlightedAulaId={setHighlightedAulaId}
+      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              classrooms={classrooms}
+              busqueda={busqueda}
+              selectedClassroom={selectedClassroom}
+              setSelectedClassroom={setSelectedClassroom}
+              setShowPopup={setShowPopup}
+              showPopup={showPopup}
+              closePopup={closePopup}
+              pisoActual={pisoActual}
+              setPisoActual={setPisoActual}
+              highlightedAulaId={highlightedAulaId}
+            />
+          }
+        />
+        <Route path="/crear-clase" element={<CrearClase />} /> {/* Nueva ruta */}
+      </Routes>
+    </Router>
   );
 }
 

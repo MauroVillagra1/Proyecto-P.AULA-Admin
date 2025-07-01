@@ -1,0 +1,108 @@
+/* Fondo oscuro para el pop-up */
+.status-classroom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro con opacidad */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 90%;
+}
+
+/* Contenedor del pop-up */
+.status-classroom-conteiner {
+  width: 45vw;
+  max-width: 500px;
+  height: auto;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px; /* Bordes más redondeados */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más grande */
+  z-index: 1000;
+}
+
+/* Título del pop-up */
+.status-clasroom-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0c649d;
+  background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(0, 0, 0, 1) 100%, rgba(237, 221, 83, 1) 100%);
+  padding: 15px;
+  border-radius: 12px 12px 0 0; /* Bordes redondeados solo en la parte superior */
+}
+
+.status-clasroom-title h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.status-clasroom-title button {
+  height: 35px;
+  width: 35px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.status-clasroom-title button:hover {
+  background-color: #ff4d4d;
+}
+
+/* Cuerpo del pop-up */
+.status-classroom-body {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  font-size: 16px;
+  background-color: #f5f5f5; /* Color más suave para el fondo */
+  flex-direction: column;
+  font-weight: bold;
+  padding: 10px; /* Ajuste del padding */
+  border-radius: 0 0 12px 12px;
+  margin-top: 15px; /* Separación del título */
+  box-sizing: border-box;
+}
+
+.status-classroom-body ul {
+  list-style: none;
+  padding: 10px;
+  text-align: left;
+  margin: 0;
+}
+
+.status-classroom-body ul li span {
+  color: rgb(0, 38, 255);
+  font-weight: bold;
+}
+
+/* Botones en el pie */
+.status-classroom-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.status-classroom-buttons button {
+  width: 130px;
+  height: 50px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+

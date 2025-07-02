@@ -63,8 +63,21 @@ console.log(plantaSeleccionada.nombre);
     <div className="navbar-content" style={{ position: 'relative' }}>
       <Container fluid>
         <Row className="align-items-center justify-content-between">
-          <Col xs={12} md="auto">
-            <Form className="d-flex" onSubmit={handleSubmit} autoComplete="off">
+        <Col xs={12} md="auto" className="d-flex align-items-center">
+  <Link to="/" className="me-3">
+    <img
+      src="https://res.cloudinary.com/dnibad7yk/image/upload/v1751467906/5458142c-788e-413e-86ca-37817bdb30c1.png" // 🔁 Cambiá esta URL por tu imagen si querés
+      alt="Inicio"
+      style={{
+        width: "50px",
+        height: "50px",
+        borderRadius: "50%",
+        objectFit: "cover",
+        cursor: "pointer"
+      }}
+    />
+  </Link>
+  <Form className="d-flex" onSubmit={handleSubmit} autoComplete="off">
               <FormControl
                 type="search"
                 placeholder="Buscar aula, materia o profesor"

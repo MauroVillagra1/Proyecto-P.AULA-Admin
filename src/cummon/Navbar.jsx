@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Form, FormControl, Container, Row, Col, ButtonGroup, ListGroup } from 'react-bootstrap';
 import './Navbar.css';
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 function Navbar({ aulas, onBusquedaChange, onAulaSelect, setPisoActual, pisoActual, setHighlightedAulaId, plantas }) {
   const [busqueda, setBusqueda] = useState("");
   const [resultados, setResultados] = useState([]);
 const horaActual = new Date().toTimeString().slice(0, 5); // formato "HH:MM"
+const navigate = useNavigate();
 
   const handleChange = (e) => {
     const texto = e.target.value;
@@ -55,6 +55,8 @@ console.log(plantaSeleccionada.nombre);
 
   const handlePisoClick = (piso) => {
     console.log("Piso seleccionado:", piso);
+    navigate("/");        // navegar a la ruta principal
+    setPisoActual(piso)
   };
 
   return (
@@ -95,7 +97,7 @@ console.log(plantaSeleccionada.nombre);
     <Button
       key={idx}
       variant={pisoActual === piso ? "primary" : "light"} // cambia el color según si es el piso actual
-      onClick={() => setPisoActual(piso)}
+      onClick={() => handlePisoClick(piso)}
     >
       {piso}
     </Button>

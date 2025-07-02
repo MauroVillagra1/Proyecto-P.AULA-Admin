@@ -141,12 +141,12 @@ const areasPorPiso = {
 const handleClick = (aulaId) => {
   const clases = clasesPorAula[aulaId] || [];
   const indexClaseActual = clases.findIndex(c => c.horario_inicio <= horaActual && horaActual < c.horario_fin);
-
+  setClasesDelPopup(clases);
+  setShowPopup(true);
   if (indexClaseActual === -1) return; // No hay clase activa
 
   setClaseIndex(indexClaseActual);
-  setClasesDelPopup(clases);
-  setShowPopup(true);
+
 };
 
 

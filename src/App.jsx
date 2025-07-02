@@ -10,6 +10,7 @@ import Navbar from "./cummon/Navbar.jsx";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CrearClase from "./components/clases/CrearClase.jsx"; // 🆕 Nuevo componente
+import ModificarClase from "./components/clases/ModificarClase.jsx";
 
 
 function App() {
@@ -20,6 +21,13 @@ const [pisoActual, setPisoActual] = useState("Planta Baja");
 const [highlightedAulaId, setHighlightedAulaId] = useState(null);
 
   const [classrooms, setClassrooms] = useState([]);
+const [plantas, setPlantas] = useState([]);
+
+useEffect(() => {
+  axios.get("https://p-aula-back-29ln.vercel.app/api/planta")
+    .then(res => setPlantas(res.data))
+    .catch(err => console.error("Error trayendo plantas", err));
+}, []);
 
   useEffect(() => {
   
@@ -54,6 +62,7 @@ const [highlightedAulaId, setHighlightedAulaId] = useState(null);
  return (
     <Router>
       <Navbar
+      plantas={plantas}
         aulas={classrooms}
         onBusquedaChange={handleBusquedaChange}
         onAulaSelect={handleAulaSelect}
@@ -80,6 +89,8 @@ const [highlightedAulaId, setHighlightedAulaId] = useState(null);
           }
         />
         <Route path="/crear-clase" element={<CrearClase />} /> {/* Nueva ruta */}
+                <Route path="/modificar-clase" element={<ModificarClase />} /> {/* Nueva ruta */}
+
       </Routes>
     </Router>
   );

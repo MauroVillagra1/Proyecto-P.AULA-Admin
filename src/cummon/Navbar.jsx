@@ -3,7 +3,7 @@ import { Button, Form, FormControl, Container, Row, Col, ButtonGroup, ListGroup 
 import './Navbar.css';
 import { Link } from "react-router-dom";
 
-function Navbar({ aulas, onBusquedaChange, onAulaSelect, setPisoActual, pisoActual, setHighlightedAulaId }) {
+function Navbar({ aulas, onBusquedaChange, onAulaSelect, setPisoActual, pisoActual, setHighlightedAulaId, plantas }) {
   const [busqueda, setBusqueda] = useState("");
   const [resultados, setResultados] = useState([]);
 const horaActual = new Date().toTimeString().slice(0, 5); // formato "HH:MM"
@@ -48,7 +48,9 @@ const handleSelect = (aula) => {
   setBusqueda("");      // Limpiar el input
   setResultados([]);    // Ocultar sugerencias
   onAulaSelect(aula);   // Mostrar popup con info del aula
-setPisoActual(aula.aula.planta.nombre);
+  const plantaSeleccionada = plantas.find(p => p._id === aula.aula.planta);
+setPisoActual(plantaSeleccionada.nombre);
+console.log(plantaSeleccionada.nombre);
 };
 
   const handlePisoClick = (piso) => {
@@ -102,6 +104,9 @@ setPisoActual(aula.aula.planta.nombre);
           </Col>
           <Col><Link to="/crear-clase" className="btn btn-success mx-2">
   Crear Clase
+</Link></Col>
+ <Col><Link to="/modificar-clase" className="btn btn-warning mx-2">
+  Modificar Clase
 </Link></Col>
         </Row>
       </Container>
